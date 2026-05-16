@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    @apply antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  body {
+    @apply bg-stone-50 text-stone-800;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-warm-200 text-stone-900;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-stone-400;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-3xl px-5 py-6 md:px-8 md:py-10;
+  }
+
+  .card {
+    @apply rounded-xl border border-stone-200/60 bg-white p-5 shadow-sm transition-all duration-200;
+  }
+
+  .card-elevated {
+    @apply rounded-xl border border-stone-200/60 bg-white p-5 shadow-md transition-all duration-200;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm;
+  }
+
+  .text-caption {
+    @apply text-xs text-stone-400;
+  }
+
+  .text-muted {
+    @apply text-sm text-stone-500;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-2xs font-medium;
+  }
+
+  /* Page enter animation */
+  .page-enter {
+    animation: fadeSlideIn 0.25s ease-out;
+  }
+
+  /* Toast animation */
+  .toast-enter {
+    animation: toastIn 0.3s ease-out;
+  }
+  .toast-exit {
+    animation: toastOut 0.2s ease-in forwards;
+  }
+
+  /* Task complete animation */
+  .task-complete {
+    animation: taskDone 0.4s ease-out;
+  }
+
+  /* Breathing animation for urgent renewals */
+  .breathe {
+    animation: breathe 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+}
+
+@keyframes taskDone {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15); }
+}
