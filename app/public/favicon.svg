@@ -1,6 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="22" fill="#fafaf9"/>
-  <circle cx="50" cy="42" r="18" fill="none" stroke="#78716c" stroke-width="4.5" stroke-linecap="round"/>
-  <path d="M28 80 Q50 58 72 80" fill="none" stroke="#78716c" stroke-width="4.5" stroke-linecap="round"/>
-  <circle cx="38" cy="38" r="3" fill="#ca8a04"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#292524"/>
+      <stop offset="100%" stop-color="#1c1917"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d6d3d1"/>
+      <stop offset="100%" stop-color="#a8a29e"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Outer focus ring -->
+  <circle cx="256" cy="240" r="120" fill="none" stroke="url(#ring)" stroke-width="28" stroke-linecap="round"/>
+
+  <!-- Gap in ring (top-right, suggesting forward motion) -->
+  <circle cx="256" cy="240" r="120" fill="none" stroke="#1c1917" stroke-width="30"
+          stroke-dasharray="188 700" stroke-dashoffset="-355" stroke-linecap="round"/>
+
+  <!-- Inner amber core -->
+  <circle cx="256" cy="240" r="52" fill="url(#amber)"/>
+
+  <!-- Center focus dot -->
+  <circle cx="256" cy="240" r="16" fill="#292524"/>
+
+  <!-- Subtle progress arc (top-right, matches ring gap) -->
+  <circle cx="256" cy="240" r="120" fill="none" stroke="url(#amber)" stroke-width="12"
+          stroke-dasharray="95 700" stroke-dashoffset="-150" stroke-linecap="round"
+          transform="rotate(-15 256 240)"/>
 </svg>
